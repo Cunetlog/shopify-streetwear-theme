@@ -57,8 +57,9 @@
       <a
         href="{{ routes.cart_url }}"
         class="desktop-sidebar__utility"
+        data-cart-open
       >
-        Bag ({{ cart.item_count }})
+        BAG (<span data-cart-count>{{ cart.item_count }}</span>)
       </a>
 
       <button

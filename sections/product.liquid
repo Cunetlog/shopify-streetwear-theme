@@ -1,49 +1,218 @@
 {% comment %}
-  This section is used in the product template to render product page with
-  media, content, and add-to-cart form.
+  Main product section.
 
-  https://shopify.dev/docs/storefronts/themes/architecture/templates/product
+  Responsibilities:
+  - product image gallery
+  - title and pricing
+  - product options / variants
+  - availability
+  - quantity
+  - add to cart
+  - product description
+
+  Variant interaction is handled by assets/theme.js.
 {% endcomment %}
 
-<div class="product-images">
-  {% for image in product.images %}
-    {% render 'image', class: 'product-image', image: image %}
-  {% endfor %}
-</div>
+{% assign current_variant = product.selected_or_first_available_variant %}
 
-<div class="product-info">
-  <h1>{{ product.title }}</h1>
-  <p>{{ product.price | money }}</p>
-  <p>{{ product.description }}</p>
-</div>
+<section
+  class="product-page"
+  data-product-section
+  data-product-url="{{ product.url }}"
+>
+  <div class="product-page__layout">
+    {% comment %}
+      Product gallery
+    {% endcomment %}
 
-<div class="product-form">
-  {% form 'product', product %}
-    {% assign current_variant = product.selected_or_first_available_variant %}
+    <div class="product-page__gallery">
+      {% if product.images.size > 0 %}
+        {% for image in product.images %}
+          {% assign image_alt = image.alt | default: product.title %}
 
-    <select name="id">
-      {% for variant in product.variants %}
-        <option
-          value="{{ variant.id }}"
-          {% if variant == current_variant %}
-            selected="selected"
-          {% endif %}
-        >
-          {{ variant.title }} - {{ variant.price | money }}
-        </option>
-      {% endfor %}
-    </select>
+          <figure class="product-page__media">
+            {{
+              image
+              | image_url: width: 1800
+              | image_tag:
+                class: 'product-page__image',
+                widths: '480, 720, 960, 1200, 1600, 1800',
+                sizes: '(min-width: 1024px) 50vw, 100vw',
+                loading: 'lazy',
+                alt: image_alt
+            }}
+          </figure>
+        {% endfor %}
+      {% else %}
+        <div class="product-page__media product-page__media--placeholder">
+          {{ 'product-1' | placeholder_svg_tag: 'product-page__placeholder' }}
+        </div>
+      {% endif %}
+    </div>
 
-    <input type="text" name="quantity" min="1" value="1">
+    {% comment %}
+      Product information
+    {% endcomment %}
 
-    <input type="submit" value="Add to cart">
-    {{ form | payment_button }}
-  {% endform %}
-</div>
+    <div class="product-page__details">
+      <div class="product-page__details-inner">
+        <header class="product-page__header">
+          <h1 class="product-page__title">
+            {{ product.title | escape }}
+          </h1>
+
+          <div
+            class="product-page__price"
+            data-product-price
+          >
+            <span data-product-current-price>
+              {{ current_variant.price | money }}
+            </span>
+
+            <s
+              class="product-page__compare-price"
+              data-product-compare-price
+              {% unless current_variant.compare_at_price > current_variant.price %}
+                hidden
+              {% endunless %}
+            >
+              {% if current_variant.compare_at_price > current_variant.price %}
+                {{ current_variant.compare_at_price | money }}
+              {% endif %}
+            </s>
+          </div>
+        </header>
+
+        {% form 'product', product, class: 'product-page__form', data-product-form: '' %}
+          {% comment %}
+            This is the real Shopify variant ID submitted to cart.
+            JavaScript will update it when an option changes.
+          {% endcomment %}
+
+          <input
+            type="hidden"
+            name="id"
+            value="{{ current_variant.id }}"
+            data-variant-id
+          >
+
+          {% unless product.has_only_default_variant %}
+            <div class="product-page__options">
+              {% for option in product.options_with_values %}
+                <fieldset
+                  class="product-option"
+                  data-product-option
+                  data-option-position="{{ option.position }}"
+                >
+                  <legend class="product-option__name">
+                    {{ option.name | escape }}
+                  </legend>
+
+                  <div class="product-option__values">
+                    {% for value in option.values %}
+                      {% assign input_id = section.id
+                        | append: '-'
+                        | append: option.position
+                        | append: '-'
+                        | append: forloop.index
+                      %}
+
+                      <div class="product-option__value">
+                        <input
+                          class="product-option__input"
+                          type="radio"
+                          id="{{ input_id }}"
+                          name="option-{{ option.position }}"
+                          value="{{ value | escape }}"
+                          data-option-value
+                          {% if option.selected_value == value %}
+                            checked
+                          {% endif %}
+                        >
+
+                        <label
+                          class="product-option__label"
+                          for="{{ input_id }}"
+                        >
+                          {{ value }}
+                        </label>
+                      </div>
+                    {% endfor %}
+                  </div>
+                </fieldset>
+              {% endfor %}
+            </div>
+          {% endunless %}
+
+          <div
+            class="product-page__availability"
+            data-product-availability
+          >
+            {% if current_variant.available %}
+              IN STOCK
+            {% else %}
+              SOLD OUT
+            {% endif %}
+          </div>
+
+          <div class="product-page__quantity">
+            <label
+              class="product-page__quantity-label"
+              for="Quantity-{{ section.id }}"
+            >
+              QUANTITY
+            </label>
+
+            <input
+              class="product-page__quantity-input"
+              id="Quantity-{{ section.id }}"
+              type="number"
+              name="quantity"
+              value="1"
+              min="1"
+              inputmode="numeric"
+            >
+          </div>
+
+          <button
+            class="product-page__add-to-cart"
+            type="submit"
+            name="add"
+            data-add-to-cart
+            {% unless current_variant.available %}
+              disabled
+            {% endunless %}
+          >
+            <span data-add-to-cart-text>
+              {% if current_variant.available %}
+                ADD TO CART
+              {% else %}
+                SOLD OUT
+              {% endif %}
+            </span>
+          </button>
+        {% endform %}
+
+        {% if product.description != blank %}
+          <div class="product-page__description rte">
+            {{ product.description }}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <script
+    type="application/json"
+    data-product-json
+  >
+    {{ product | json }}
+  </script>
+</section>
 
 {% schema %}
 {
-  "name": "t:general.product",
+  "name": "Product",
   "settings": [],
   "disabled_on": {
     "groups": ["header", "footer"]

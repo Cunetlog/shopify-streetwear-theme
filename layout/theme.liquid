@@ -93,6 +93,7 @@
     {% section 'desktop-sidebar' %}
     {% section 'mobile-header' %}
     {% section 'mobile-menu' %}
+    {% section 'cart-drawer' %}
 
     <main
       id="MainContent"
@@ -115,6 +116,10 @@
 
     <script
       src="{{ 'theme-toggle.js' | asset_url }}"
+      defer
+    ></script>
+    <script
+      src="{{ 'cart.js' | asset_url }}"
       defer
     ></script>
   </body>

@@ -68,6 +68,26 @@
   .price {
     font-size: var(--font-size-sm);
   }
+
+  .search-page__input {
+    height: 2.75rem;
+  
+    font-size: var(--font-size-sm);
+  }
+  
+  .search-page__submit {
+    min-width: 5.5rem;
+    height: 2.75rem;
+    padding: 0 var(--space-3);
+  
+    font-size: var(--font-size-xs);
+  }
+  
+  .search-page__summary {
+    margin-top: var(--space-3);
+  
+    font-size: var(--font-size-xs);
+  }
 }
 
 /* ==========================================================================

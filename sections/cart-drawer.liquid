@@ -1,0 +1,158 @@
+{% comment %}
+  Global cart drawer.
+
+  Shopify remains the source of truth.
+  Cart contents are refreshed by assets/cart.js.
+{% endcomment %}
+
+<dialog
+  class="cart-drawer"
+  data-cart-drawer
+  aria-labelledby="CartDrawerTitle"
+>
+  <div class="cart-drawer__inner">
+    <header class="cart-drawer__header">
+      <h2
+        class="cart-drawer__title"
+        id="CartDrawerTitle"
+      >
+        YOUR BAG
+      </h2>
+
+      <button
+        class="cart-drawer__close"
+        type="button"
+        aria-label="Close cart"
+        data-cart-close
+      >
+        CLOSE
+      </button>
+    </header>
+
+    <div
+      class="cart-drawer__content"
+      data-cart-content
+      aria-live="polite"
+    >
+      {% if cart.item_count > 0 %}
+        <div class="cart-drawer__items">
+          {% for item in cart.items %}
+            <article
+              class="cart-item"
+              data-cart-item
+              data-line="{{ forloop.index }}"
+            >
+              <a
+                class="cart-item__media"
+                href="{{ item.url }}"
+              >
+                {% if item.image %}
+                  {{
+                    item.image
+                    | image_url: width: 300
+                    | image_tag:
+                      class: 'cart-item__image',
+                      loading: 'lazy',
+                      widths: '120, 180, 240, 300',
+                      sizes: '120px',
+                      alt: item.product.title
+                  }}
+                {% endif %}
+              </a>
+
+              <div class="cart-item__details">
+                <a
+                  class="cart-item__title"
+                  href="{{ item.url }}"
+                >
+                  {{ item.product.title | escape }}
+                </a>
+
+                {% unless item.product.has_only_default_variant %}
+                  <div class="cart-item__options">
+                    {% for option in item.options_with_values %}
+                      <span> {{ option.name }}: {{ option.value }} </span>
+                    {% endfor %}
+                  </div>
+                {% endunless %}
+
+                <div class="cart-item__price">
+                  {{ item.final_line_price | money }}
+                </div>
+
+                <div class="cart-item__controls">
+                  <button
+                    type="button"
+                    class="cart-item__quantity-button"
+                    aria-label="Decrease quantity"
+                    data-cart-decrease
+                  >
+                    −
+                  </button>
+
+                  <span
+                    class="cart-item__quantity"
+                    data-cart-quantity
+                  >
+                    {{ item.quantity }}
+                  </span>
+
+                  <button
+                    type="button"
+                    class="cart-item__quantity-button"
+                    aria-label="Increase quantity"
+                    data-cart-increase
+                  >
+                    +
+                  </button>
+
+                  <button
+                    type="button"
+                    class="cart-item__remove"
+                    data-cart-remove
+                  >
+                    REMOVE
+                  </button>
+                </div>
+              </div>
+            </article>
+          {% endfor %}
+        </div>
+
+        <footer class="cart-drawer__footer">
+          <div class="cart-drawer__subtotal">
+            <span>SUBTOTAL</span>
+
+            <span data-cart-subtotal>
+              {{ cart.total_price | money }}
+            </span>
+          </div>
+
+          <form
+            action="{{ routes.cart_url }}"
+            method="post"
+            class="cart-drawer__checkout-form"
+          >
+            <button
+              class="cart-drawer__checkout"
+              type="submit"
+              name="checkout"
+            >
+              CHECKOUT
+            </button>
+          </form>
+        </footer>
+
+      {% else %}
+        <div class="cart-drawer__empty">YOUR BAG IS EMPTY</div>
+      {% endif %}
+    </div>
+  </div>
+</dialog>
+
+{% schema %}
+{
+  "name": "Cart drawer",
+  "settings": []
+}
+{% endschema %}

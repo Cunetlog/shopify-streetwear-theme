@@ -32,9 +32,12 @@
     class="mobile-header__cart"
     href="{{ routes.cart_url }}"
     aria-label="Cart, {{ cart.item_count }} items"
+    data-cart-open
   >
     BAG
-    <span aria-hidden="true">({{ cart.item_count }})</span>
+    <span aria-hidden="true"
+      >(<span data-cart-count>{{ cart.item_count }}</span>)</span
+    >
   </a>
 </header>
 
