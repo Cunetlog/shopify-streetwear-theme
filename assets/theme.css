@@ -147,7 +147,7 @@ a:hover {
 .desktop-sidebar__top {
     display: flex;
     flex-direction: column;
-    gap: var(--space-5);
+    gap: 1.5rem;
 }
 
 .desktop-sidebar__logo {
@@ -173,13 +173,13 @@ a:hover {
 .desktop-sidebar__menu {
     display: flex;
     flex-direction: column;
-    gap: var(--space-2);
+    gap: 0.7rem;
 }
 
 .desktop-sidebar__link {
     display: inline-block;
 
-    font-size: 0.78rem;
+    font-size: 0.8rem;
     line-height: 1.15;
     text-transform: uppercase;
     letter-spacing: -0.02em;
