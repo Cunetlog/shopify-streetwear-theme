@@ -1,0 +1,44 @@
+{% comment %}
+  Reusable product card.
+
+  Required:
+  - product
+{% endcomment %}
+
+<article class="product-card">
+  <a
+    class="product-card__link"
+    href="{{ product.url }}"
+  >
+    <div class="product-card__media">
+      {% if product.featured_image %}
+        {% assign product_image_alt = product.featured_image.alt | default: product.title %}
+
+        {{
+          product.featured_image
+          | image_url: width: 1200
+          | image_tag:
+            class: 'product-card__image',
+            widths: '320, 480, 640, 800, 1000, 1200',
+            sizes: '(min-width: 1025px) 25vw, (min-width: 768px) 33vw, 50vw',
+            loading: 'lazy',
+            alt: product_image_alt
+        }}
+      {% else %}
+        <div class="product-card__image-placeholder"></div>
+      {% endif %}
+
+      {% unless product.available %}
+        <span class="product-card__status"> Sold out </span>
+      {% endunless %}
+    </div>
+
+    <div class="product-card__content">
+      <h2 class="product-card__title">
+        {{ product.title | escape }}
+      </h2>
+
+      {% render 'price', product: product %}
+    </div>
+  </a>
+</article>

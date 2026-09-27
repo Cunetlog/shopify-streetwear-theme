@@ -50,6 +50,24 @@
   .site-main {
     padding-top: var(--mobile-header-height);
   }
+
+  .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+    
+  .collection-page__header {
+    padding-top: var(--space-5);
+    padding-bottom: var(--space-4);
+  }
+    
+  .product-card__content {
+    padding: var(--space-3);
+  }
+    
+  .product-card__title,
+  .price {
+    font-size: var(--font-size-sm);
+  }
 }
 
 /* ==========================================================================
@@ -101,6 +119,10 @@
 
   .site-main {
     padding-top: var(--mobile-header-height);
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 

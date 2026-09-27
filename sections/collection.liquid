@@ -1,47 +1,51 @@
 {% comment %}
-  This section is used in the collection template to render collection page
-  listing all products within a collection.
+  Main collection section.
 
-  https://shopify.dev/docs/storefronts/themes/architecture/templates/collection
+  Responsibilities:
+  - collection heading
+  - optional collection description
+  - product grid
+  - pagination
+
+  Product markup is delegated to snippets/product-card.liquid.
 {% endcomment %}
 
-<h1>{{ collection.title }}</h1>
+<section class="collection-page">
+  <header class="collection-page__header">
+    <h1 class="collection-page__title">
+      {{ collection.title | escape }}
+    </h1>
 
-<div class="collection-products">
-  {% paginate collection.products by 20 %}
-    {% for product in collection.products %}
-      <div class="collection-product">
-        {% if product.featured_image %}
-          {% render 'image',
-            class: 'collection-product__image',
-            image: product.featured_image,
-            url: product.url,
-            width: 400,
-            height: 400,
-            crop: 'center'
-          %}
-        {% endif %}
-        <div class="collection-product__content">
-          <p>{{ product.title | escape | link_to: product.url }}</p>
-          <p>{{ product.price | money }}</p>
-        </div>
+    {% if collection.description != blank %}
+      <div class="collection-page__description rte">
+        {{ collection.description }}
       </div>
-    {% endfor %}
+    {% endif %}
+  </header>
 
-    {{ paginate | default_pagination }}
+  {% paginate collection.products by 24 %}
+    {% if collection.products.size > 0 %}
+      <div class="product-grid">
+        {% for product in collection.products %}
+          {% render 'product-card', product: product %}
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    {% if paginate.pages > 1 %}
+      <nav
+        class="collection-pagination"
+        aria-label="Pagination"
+      >
+        {{ paginate | default_pagination }}
+      </nav>
+    {% endif %}
   {% endpaginate %}
-</div>
-
-{% stylesheet %}
-  .collection-products {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
-  }
-{% endstylesheet %}
+</section>
 
 {% schema %}
 {
-  "name": "t:general.collection",
+  "name": "Collection",
   "settings": []
 }
 {% endschema %}

@@ -1,0 +1,28 @@
+{% comment %}
+  Product price component.
+
+  Required:
+  - product
+{% endcomment %}
+
+{% assign current_variant = product.selected_or_first_available_variant %}
+
+<div class="price">
+  {% if current_variant.compare_at_price > current_variant.price %}
+    <span class="price__current">
+      {{ current_variant.price | money }}
+    </span>
+
+    <s class="price__compare">
+      {{ current_variant.compare_at_price | money }}
+    </s>
+  {% else %}
+    <span class="price__current">
+      {{ current_variant.price | money }}
+    </span>
+  {% endif %}
+
+  {% unless product.available %}
+    <span class="price__sold-out"> — Sold out </span>
+  {% endunless %}
+</div>
