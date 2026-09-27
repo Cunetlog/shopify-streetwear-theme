@@ -1,9 +1,17 @@
 <section class="brand-manifesto">
   <div class="brand-manifesto__inner">
-    {% if section.settings.text != blank %}
-      <div class="brand-manifesto__text">
-        {{ section.settings.text }}
-      </div>
+    {% if localization.language.iso_code == 'it' %}
+      {% if section.settings.text_it != blank %}
+        <div class="brand-manifesto__text">
+          {{ section.settings.text_it }}
+        </div>
+      {% endif %}
+    {% else %}
+      {% if section.settings.text_en != blank %}
+        <div class="brand-manifesto__text">
+          {{ section.settings.text_en }}
+        </div>
+      {% endif %}
     {% endif %}
   </div>
 </section>
@@ -14,9 +22,15 @@
   "settings": [
     {
       "type": "richtext",
-      "id": "text",
-      "label": "Manifesto text",
+      "id": "text_en",
+      "label": "Manifesto text — English",
       "default": "<p><strong>Born in Qt8.</strong><br><strong>Built to go beyond it.</strong><br><strong>For those who dream beyond where they come from.</strong><br><strong>From the streets of Milan to everywhere the ambition takes us.</strong><br><strong>This is more than a place.</strong><br><strong>It’s a mindset.</strong><br><strong>Qt8 — made to be taken worldwide</strong></p>"
+    },
+    {
+      "type": "richtext",
+      "id": "text_it",
+      "label": "Manifesto text — Italiano",
+      "default": "<p><strong>Nato a Qt8.</strong><br><strong>Creato per andare oltre.</strong><br><strong>Per chi sogna oltre il luogo da cui proviene.</strong><br><strong>Dalle strade di Milano a ovunque ci porti l’ambizione.</strong><br><strong>Questo è più di un luogo.</strong><br><strong>È una mentalità.</strong><br><strong>Qt8 — nato per arrivare ovunque.</strong></p>"
     }
   ],
   "presets": [
