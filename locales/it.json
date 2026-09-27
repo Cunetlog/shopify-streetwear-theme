@@ -32,13 +32,33 @@
     "placeholder": "Cerca articoli, pagine o prodotti",
     "submit": "Cerca",
     "no_results_html": "Nessun risultato trovato per {{ terms }}",
-    "results_for_html": "{{ count }} risultati trovati per {{ terms }}"
+    "results_for_html": "{{ count }} risultati trovati per {{ terms }}",
+    "products_placeholder": "Cerca prodotti",
+    "result_for": "risultato per",
+    "results_for": "risultati per"
   },
   "theme": {
     "search": "Cerca",
     "bag": "Carrello",
     "country_region": "Paese / Regione",
     "language": "Lingua",
-    "sold_out": "Esaurito"
+    "sold_out": "Esaurito",
+    "light_dark": "Chiaro / Scuro",
+    "navigation_menu": "Menu di navigazione",
+    "close_menu": "Chiudi menu",
+    "toggle_dark_mode": "Attiva/disattiva modalità scura",
+    "social_links": "Link social",
+    "your_bag": "Il tuo carrello",
+    "close_cart": "Chiudi carrello",
+    "close": "Chiudi",
+    "remove": "Rimuovi",
+    "subtotal": "Subtotale",
+    "checkout": "Checkout",
+    "bag_empty": "Il tuo carrello è vuoto",
+    "decrease_quantity": "Riduci quantità",
+    "increase_quantity": "Aumenta quantità",
+    "in_stock": "Disponibile",
+    "quantity": "Quantità",
+    "add_to_cart": "Aggiungi al carrello"
   }
 }

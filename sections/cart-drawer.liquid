@@ -16,7 +16,7 @@
         class="cart-drawer__title"
         id="CartDrawerTitle"
       >
-        YOUR BAG
+        {{ 'theme.your_bag' | t }}
       </h2>
 
       <button
@@ -25,7 +25,7 @@
         aria-label="Close cart"
         data-cart-close
       >
-        CLOSE
+        {{ 'theme.close' | t }}
       </button>
     </header>
 
@@ -111,7 +111,7 @@
                     class="cart-item__remove"
                     data-cart-remove
                   >
-                    REMOVE
+                    {{ 'theme.remove' | t }}
                   </button>
                 </div>
               </div>
@@ -121,7 +121,7 @@
 
         <footer class="cart-drawer__footer">
           <div class="cart-drawer__subtotal">
-            <span>SUBTOTAL</span>
+            <span>{{ 'theme.subtotal' | t }}</span>
 
             <span data-cart-subtotal>
               {{ cart.total_price | money }}
@@ -144,7 +144,7 @@
         </footer>
 
       {% else %}
-        <div class="cart-drawer__empty">YOUR BAG IS EMPTY</div>
+        <div class="cart-drawer__empty">{{ 'theme.bag_empty' | t }}</div>
       {% endif %}
     </div>
   </div>

@@ -1,6 +1,6 @@
 <section class="search-page">
   <header class="search-page__header">
-    <h1 class="search-page__title">Search</h1>
+    <h1 class="search-page__title">{{ 'search.title' | t }}</h1>
 
     <form
       class="search-page__form"
@@ -18,7 +18,7 @@
         class="visually-hidden"
         for="SearchInput"
       >
-        Search products
+        {{ 'search.products_placeholder' | t }}
       </label>
 
       <input
@@ -35,7 +35,7 @@
         class="search-page__submit"
         type="submit"
       >
-        Search
+        {{ 'search.submit' | t }}
       </button>
     </form>
 

@@ -149,9 +149,9 @@
             data-product-availability
           >
             {% if current_variant.available %}
-              IN STOCK
+              {{ 'theme.in_stock' | t }}
             {% else %}
-              SOLD OUT
+              {{ 'theme.sold_out' | t }}
             {% endif %}
           </div>
 
@@ -160,7 +160,7 @@
               class="product-page__quantity-label"
               for="Quantity-{{ section.id }}"
             >
-              QUANTITY
+              {{ 'theme.quantity' | t }}
             </label>
 
             <input
@@ -185,9 +185,9 @@
           >
             <span data-add-to-cart-text>
               {% if current_variant.available %}
-                ADD TO CART
+                {{ 'theme.add_to_cart' | t }}
               {% else %}
-                SOLD OUT
+                {{ 'theme.sold_out' | t }}
               {% endif %}
             </span>
           </button>

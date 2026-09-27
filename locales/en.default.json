@@ -56,14 +56,33 @@
     "placeholder": "Search articles, pages, or products",
     "submit": "Search",
     "no_results_html": "No results found for {{ terms }}",
-    "results_for_html": "{{ count }} results found for {{ terms }}"
+    "results_for_html": "{{ count }} results found for {{ terms }}",
+    "products_placeholder": "Search products",
+    "result_for": "result for",
+    "results_for": "results for"
   },
   "theme": {
     "search": "Search",
     "bag": "Bag",
-    "light_dark": "Light / Dark",
     "country_region": "Country / Region",
     "language": "Language",
-    "sold_out": "Sold out"
+    "sold_out": "Sold out",
+    "light_dark": "Light / Dark",
+    "navigation_menu": "Navigation menu",
+    "close_menu": "Close menu",
+    "toggle_dark_mode": "Toggle dark mode",
+    "social_links": "Social links",
+    "your_bag": "Your bag",
+    "close_cart": "Close cart",
+    "close": "Close",
+    "remove": "Remove",
+    "subtotal": "Subtotal",
+    "checkout": "Checkout",
+    "bag_empty": "Your bag is empty",
+    "decrease_quantity": "Decrease quantity",
+    "increase_quantity": "Increase quantity",
+    "in_stock": "In stock",
+    "quantity": "Quantity",
+    "add_to_cart": "Add to cart"
   }
 }
