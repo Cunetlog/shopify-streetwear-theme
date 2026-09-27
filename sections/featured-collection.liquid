@@ -1,0 +1,43 @@
+{% liquid
+  assign home_collection = section.settings.collection
+
+  if home_collection == blank
+    assign home_collection = collections.all
+  endif
+%}
+
+<section class="home-products">
+  {% if home_collection != blank %}
+    {% paginate home_collection.products by 24 %}
+      <div class="product-grid">
+        {% for product in home_collection.products %}
+          {% render 'product-card', product: product %}
+        {% endfor %}
+      </div>
+
+      {% if paginate.pages > 1 %}
+        <div class="collection-pagination">
+          {{ paginate | default_pagination }}
+        </div>
+      {% endif %}
+    {% endpaginate %}
+  {% endif %}
+</section>
+
+{% schema %}
+{
+  "name": "Featured collection",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured collection"
+    }
+  ]
+}
+{% endschema %}

@@ -44,6 +44,11 @@
     </header>
 
     <div class="mobile-menu__content">
+      {% if settings.sidebar_motto != blank %}
+        <p class="mobile-menu__motto">
+          {{ settings.sidebar_motto }}
+        </p>
+      {% endif %}
       {% if settings.main_menu != blank %}
         <nav aria-label="Main menu">
           <ul class="mobile-menu__navigation" role="list">
@@ -65,7 +70,9 @@
       {% endif %}
 
       <div class="mobile-menu__utilities">
-        <a href="{{ routes.search_url }}">Search</a>
+        <a href="{{ routes.search_url }}">{{ 'theme.search' | t }}</a>
+
+        {% render 'localization-selector' %}
 
         <button
           type="button"
@@ -74,7 +81,7 @@
           aria-label="Toggle dark mode"
           aria-pressed="false"
         >
-          Light / Dark
+          {{ 'theme.light_dark' | t }}
         </button>
       </div>
     </div>

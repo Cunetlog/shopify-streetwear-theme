@@ -1,0 +1,103 @@
+{% if localization.available_countries.size > 1 or localization.available_languages.size > 1 %}
+  <div class="localization-selector" data-localization-root>
+    {% form 'localization', class: 'localization-selector__form' %}
+      {% if localization.available_countries.size > 1 %}
+        <div class="localization-selector__item">
+          <button
+            type="button"
+            class="localization-selector__trigger"
+            data-localization-trigger="country"
+            aria-expanded="false"
+          >
+            <span>
+              {{ localization.country.name }}
+              /
+              {{ localization.country.currency.iso_code }}
+              {{ localization.country.currency.symbol }}
+            </span>
+            <span aria-hidden="true">⌄</span>
+          </button>
+
+          <div
+            class="localization-selector__panel"
+            data-localization-panel="country"
+            hidden
+          >
+            <div class="localization-selector__panel-inner">
+              <p class="localization-selector__title">{{ 'theme.country_region' | t }}</p>
+
+              <ul class="localization-selector__list" role="list">
+                {% for country in localization.available_countries %}
+                  <li>
+                    <button
+                      type="button"
+                      class="localization-selector__option{% if country.iso_code == localization.country.iso_code %} is-active{% endif %}"
+                      data-localization-country="{{ country.iso_code }}"
+                    >
+                      {{ country.name }}
+                      /
+                      {{ country.currency.iso_code }}
+                      {{ country.currency.symbol }}
+                    </button>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+
+      {% if localization.available_languages.size > 1 %}
+        <div class="localization-selector__item">
+          <button
+            type="button"
+            class="localization-selector__trigger"
+            data-localization-trigger="language"
+            aria-expanded="false"
+          >
+            <span>{{ localization.language.endonym_name }}</span>
+            <span aria-hidden="true">⌄</span>
+          </button>
+
+          <div
+            class="localization-selector__panel"
+            data-localization-panel="language"
+            hidden
+          >
+            <div class="localization-selector__panel-inner">
+              <p class="localization-selector__title">{{ 'theme.language' | t }}</p>
+
+              <ul class="localization-selector__list" role="list">
+                {% for language in localization.available_languages %}
+                  <li>
+                    <button
+                      type="button"
+                      class="localization-selector__option{% if language.iso_code == localization.language.iso_code %} is-active{% endif %}"
+                      data-localization-language="{{ language.iso_code }}"
+                    >
+                      {{ language.endonym_name }}
+                    </button>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+
+      <input
+        type="hidden"
+        name="country_code"
+        value="{{ localization.country.iso_code }}"
+        data-localization-country-input
+      >
+
+      <input
+        type="hidden"
+        name="language_code"
+        value="{{ localization.language.iso_code }}"
+        data-localization-language-input
+      >
+    {% endform %}
+  </div>
+{% endif %}

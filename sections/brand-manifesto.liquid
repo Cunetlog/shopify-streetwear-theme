@@ -1,0 +1,28 @@
+<section class="brand-manifesto">
+  <div class="brand-manifesto__inner">
+    {% if section.settings.text != blank %}
+      <div class="brand-manifesto__text">
+        {{ section.settings.text }}
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Brand manifesto",
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Manifesto text",
+      "default": "<p><strong>Born in Qt8.</strong><br><strong>Built to go beyond it.</strong><br><strong>For those who dream beyond where they come from.</strong><br><strong>From the streets of Milan to everywhere the ambition takes us.</strong><br><strong>This is more than a place.</strong><br><strong>It’s a mindset.</strong><br><strong>Qt8 — made to be taken worldwide</strong></p>"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Brand manifesto"
+    }
+  ]
+}
+{% endschema %}

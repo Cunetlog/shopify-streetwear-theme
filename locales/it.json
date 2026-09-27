@@ -1,0 +1,36 @@
+{
+  "404": {
+    "title": "404",
+    "not_found": "Pagina non trovata.",
+    "back_to_shopping": "Torna allo shopping"
+  },
+  "cart": {
+    "checkout": "Checkout",
+    "title": "Carrello",
+    "update": "Aggiorna",
+    "remove": "Rimuovi"
+  },
+  "collections": {
+    "title": "Collezioni"
+  },
+  "password": {
+    "title": "Questo negozio è privato",
+    "password": "Password",
+    "enter": "Entra"
+  },
+  "search": {
+    "title": "Cerca",
+    "placeholder": "Cerca articoli, pagine o prodotti",
+    "submit": "Cerca",
+    "no_results_html": "Nessun risultato trovato per {{ terms }}",
+    "results_for_html": "{{ count }} risultati trovati per {{ terms }}"
+  },
+  "theme": {
+    "search": "Cerca",
+    "bag": "Carrello",
+    "light_dark": "Chiaro / Scuro",
+    "country_region": "Paese / Regione",
+    "language": "Lingua",
+    "sold_out": "Esaurito"
+  }
+}

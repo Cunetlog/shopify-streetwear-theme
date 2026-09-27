@@ -25,6 +25,12 @@
         {% endif %}
       </a>
 
+      {% if settings.sidebar_motto != blank %}
+        <p class="desktop-sidebar__motto">
+          {{ settings.sidebar_motto }}
+        </p>
+      {% endif %}
+
       {% if settings.main_menu != blank %}
         <nav class="desktop-sidebar__nav" aria-label="Main menu">
           <ul class="desktop-sidebar__menu" role="list">
@@ -51,7 +57,7 @@
         href="{{ routes.search_url }}"
         class="desktop-sidebar__utility"
       >
-        Search
+        {{ 'theme.search' | t }}
       </a>
 
       <a
@@ -59,8 +65,10 @@
         class="desktop-sidebar__utility"
         data-cart-open
       >
-        BAG (<span data-cart-count>{{ cart.item_count }}</span>)
+        {{ 'theme.bag' | t }} (<span data-cart-count>{{ cart.item_count }}</span>)
       </a>
+
+      {% render 'localization-selector' %}
 
       <button
         type="button"
@@ -69,7 +77,7 @@
         aria-label="Toggle dark mode"
         aria-pressed="false"
       >
-        Light / Dark
+        {{ 'theme.light_dark' | t }}
       </button>
     </div>
   </div>

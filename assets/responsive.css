@@ -88,6 +88,17 @@
   
     font-size: var(--font-size-xs);
   }
+
+  .brand-manifesto__inner {
+    padding:
+    var(--space-6) var(--page-padding);
+  }
+  
+  .brand-manifesto__text {
+    max-width: 100%;
+  
+    font-size: var(--font-size-sm);
+  }
 }
 
 /* ==========================================================================
