@@ -39,6 +39,41 @@
     ]
   },
   {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "color",
+        "id": "color_background_light",
+        "label": "Light background",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "color_text_light",
+        "label": "Light text",
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "id": "color_background_dark",
+        "label": "Dark background",
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "id": "color_text_dark",
+        "label": "Dark text",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "color_accent",
+        "label": "Accent color",
+        "default": "#000000"
+      }
+    ]
+  },
+  {
     "name": "Navigation",
     "settings": [
       {
