@@ -8,6 +8,26 @@
     "theme_support_url": "https://support.shopify.com/"
   },
   {
+    "name": "Brand",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo"
+      },
+      {
+        "type": "range",
+        "id": "logo_width",
+        "min": 60,
+        "max": 220,
+        "step": 5,
+        "unit": "px",
+        "label": "Logo width",
+        "default": 120
+      }
+    ]
+  },
+  {
     "name": "Navigation",
     "settings": [
       {

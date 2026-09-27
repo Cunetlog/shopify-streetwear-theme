@@ -5,8 +5,24 @@
         class="desktop-sidebar__logo"
         href="{{ routes.root_url }}"
         aria-label="{{ shop.name | escape }}"
+        style="--sidebar-logo-width: {{ settings.logo_width }}px;"
       >
-        {{ shop.name }}
+        {% if settings.logo != blank %}
+          {{
+            settings.logo
+            | image_url: width: 440
+            | image_tag:
+              class: 'desktop-sidebar__logo-image',
+              widths: '120, 180, 240, 320, 440',
+              width: settings.logo_width,
+              alt: shop.name,
+              loading: 'eager'
+          }}
+        {% else %}
+          <span class="desktop-sidebar__logo-text">
+            {{ shop.name }}
+          </span>
+        {% endif %}
       </a>
 
       {% if settings.main_menu != blank %}
@@ -31,13 +47,9 @@
     </div>
 
     <div class="desktop-sidebar__bottom">
-      <a href="{{ routes.search_url }}" class="desktop-sidebar__utility">
-        Search
-      </a>
+      <a href="{{ routes.search_url }}" class="desktop-sidebar__utility"> Search </a>
 
-      <a href="{{ routes.cart_url }}" class="desktop-sidebar__utility">
-        Bag ({{ cart.item_count }})
-      </a>
+      <a href="{{ routes.cart_url }}" class="desktop-sidebar__utility"> Bag ({{ cart.item_count }}) </a>
     </div>
   </div>
 </aside>
