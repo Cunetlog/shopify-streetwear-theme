@@ -15,7 +15,17 @@
     href="{{ routes.root_url }}"
     aria-label="{{ shop.name | escape }}"
   >
-    {{ shop.name }}
+    {% if settings.logo != blank %}
+      {{
+        settings.logo
+        | image_url: width: 240
+        | image_tag: class: 'mobile-header__logo-image', widths: '80, 120, 160, 240', alt: shop.name, loading: 'eager'
+      }}
+    {% else %}
+      <span class="mobile-header__logo-text">
+        {{ shop.name }}
+      </span>
+    {% endif %}
   </a>
 
   <a

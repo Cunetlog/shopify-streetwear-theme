@@ -24,6 +24,11 @@
         "unit": "px",
         "label": "Logo width",
         "default": 120
+      },
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon"
       }
     ]
   },

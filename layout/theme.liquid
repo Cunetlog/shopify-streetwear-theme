@@ -53,6 +53,14 @@
     {{ 'theme.css' | asset_url | stylesheet_tag }}
     {{ 'responsive.css' | asset_url | stylesheet_tag }}
 
+    {% if settings.favicon != blank %}
+      <link
+        rel="icon"
+        type="image/png"
+        href="{{ settings.favicon | image_url: width: 64, height: 64 }}"
+      >
+    {% endif %}
+
     {{ content_for_header }}
   </head>
 

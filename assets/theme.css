@@ -252,6 +252,25 @@ a:hover {
     border-bottom: 1px solid var(--color-border);
 }
 
+.mobile-header__logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mobile-header__logo-image {
+    display: block;
+    width: 4.5rem;
+    height: auto;
+    max-height: 2.75rem;
+    object-fit: contain;
+}
+
+.mobile-header__logo-text {
+    font-size: var(--font-size-md);
+    text-transform: uppercase;
+}
+
 .mobile-menu__close {
     justify-self: start;
 }
