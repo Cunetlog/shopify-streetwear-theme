@@ -42,6 +42,13 @@
     --transition-fast: 150ms ease;
 }
 
+[data-theme="dark"] {
+    --color-background: #0a0a0a;
+    --color-text: #f5f5f2;
+    --color-border: #2a2a28;
+    --color-muted: #9a9a94;
+}
+
 /* ==========================================================================
    Document
    ========================================================================== */
@@ -198,8 +205,29 @@ a:hover {
 }
 
 .desktop-sidebar__utility {
-    font-size: var(--font-size-xs);
+    font-size: 0.95rem;
+    line-height: 1.2;
     text-transform: uppercase;
+    letter-spacing: -0.02em;
+}
+
+.theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    padding: 0;
+
+    color: inherit;
+
+    font-size: var(--font-size-xs);
+    line-height: inherit;
+    text-transform: uppercase;
+    text-align: left;
+
+    transition: opacity var(--transition-fast);
+}
+
+.theme-toggle:hover {
+    opacity: 0.65;
 }
 
 /* ==========================================================================
@@ -276,8 +304,21 @@ a:hover {
 }
 
 .mobile-menu__logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     justify-self: center;
+}
 
+.mobile-menu__logo-image {
+    display: block;
+    width: 4.5rem;
+    height: auto;
+    max-height: 2.75rem;
+    object-fit: contain;
+}
+
+.mobile-menu__logo-text {
     font-size: var(--font-size-md);
     text-transform: uppercase;
 }
@@ -329,12 +370,6 @@ a:hover {
 
     font-size: var(--font-size-sm);
     text-transform: uppercase;
-}
-
-.mobile-menu__theme-placeholder:disabled {
-    color: inherit;
-    opacity: 0.4;
-    cursor: default;
 }
 
 body.mobile-menu-open {

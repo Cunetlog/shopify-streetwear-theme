@@ -47,6 +47,24 @@
     <script>
       document.documentElement.classList.remove('no-js');
       document.documentElement.classList.add('js');
+
+      (() => {
+        const storageKey = 'qt8-theme';
+
+        try {
+          const savedTheme = localStorage.getItem(storageKey);
+
+          if (savedTheme === 'light' || savedTheme === 'dark') {
+            document.documentElement.dataset.theme = savedTheme;
+            return;
+          }
+
+          const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          document.documentElement.dataset.theme = prefersDark ? 'dark' : 'light';
+        } catch (error) {
+          document.documentElement.dataset.theme = 'light';
+        }
+      })();
     </script>
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
@@ -92,6 +110,11 @@
 
     <script
       src="{{ 'menu.js' | asset_url }}"
+      defer
+    ></script>
+
+    <script
+      src="{{ 'theme-toggle.js' | asset_url }}"
       defer
     ></script>
   </body>

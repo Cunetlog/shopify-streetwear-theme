@@ -47,9 +47,29 @@
     </div>
 
     <div class="desktop-sidebar__bottom">
-      <a href="{{ routes.search_url }}" class="desktop-sidebar__utility"> Search </a>
+      <a
+        href="{{ routes.search_url }}"
+        class="desktop-sidebar__utility"
+      >
+        Search
+      </a>
 
-      <a href="{{ routes.cart_url }}" class="desktop-sidebar__utility"> Bag ({{ cart.item_count }}) </a>
+      <a
+        href="{{ routes.cart_url }}"
+        class="desktop-sidebar__utility"
+      >
+        Bag ({{ cart.item_count }})
+      </a>
+
+      <button
+        type="button"
+        class="desktop-sidebar__utility theme-toggle"
+        data-theme-toggle
+        aria-label="Toggle dark mode"
+        aria-pressed="false"
+      >
+        Light / Dark
+      </button>
     </div>
   </div>
 </aside>
