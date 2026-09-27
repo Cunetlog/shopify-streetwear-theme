@@ -64,6 +64,10 @@
       Skip to content
     </a>
 
+    {% section 'desktop-sidebar' %}
+    {% section 'mobile-header' %}
+    {% section 'mobile-menu' %}
+
     <main
       id="MainContent"
       class="site-main"
@@ -75,6 +79,11 @@
 
     <script
       src="{{ 'theme.js' | asset_url }}"
+      defer
+    ></script>
+
+    <script
+      src="{{ 'menu.js' | asset_url }}"
       defer
     ></script>
   </body>

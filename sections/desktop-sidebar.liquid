@@ -1,0 +1,50 @@
+<aside class="desktop-sidebar" aria-label="Primary navigation">
+  <div class="desktop-sidebar__inner">
+    <div class="desktop-sidebar__top">
+      <a
+        class="desktop-sidebar__logo"
+        href="{{ routes.root_url }}"
+        aria-label="{{ shop.name | escape }}"
+      >
+        {{ shop.name }}
+      </a>
+
+      {% if settings.main_menu != blank %}
+        <nav class="desktop-sidebar__nav" aria-label="Main menu">
+          <ul class="desktop-sidebar__menu" role="list">
+            {% for link in settings.main_menu.links %}
+              <li class="desktop-sidebar__item">
+                <a
+                  class="desktop-sidebar__link{% if link.current %} is-active{% endif %}"
+                  href="{{ link.url }}"
+                  {% if link.current %}
+                    aria-current="page"
+                  {% endif %}
+                >
+                  {{ link.title }}
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        </nav>
+      {% endif %}
+    </div>
+
+    <div class="desktop-sidebar__bottom">
+      <a href="{{ routes.search_url }}" class="desktop-sidebar__utility">
+        Search
+      </a>
+
+      <a href="{{ routes.cart_url }}" class="desktop-sidebar__utility">
+        Bag ({{ cart.item_count }})
+      </a>
+    </div>
+  </div>
+</aside>
+
+{% schema %}
+{
+  "name": "Desktop sidebar",
+  "settings": []
+}
+{% endschema %}

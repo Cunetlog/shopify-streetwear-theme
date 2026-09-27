@@ -1,0 +1,72 @@
+<dialog
+  id="MobileMenu"
+  class="mobile-menu"
+  data-mobile-menu
+  aria-label="Navigation menu"
+>
+  <div class="mobile-menu__inner">
+    <header class="mobile-menu__header">
+      <button
+        class="mobile-menu__close"
+        type="button"
+        aria-label="Close menu"
+        data-mobile-menu-close
+      >
+        {% render 'icon-close' %}
+      </button>
+
+      <a
+        class="mobile-menu__logo"
+        href="{{ routes.root_url }}"
+        aria-label="{{ shop.name | escape }}"
+      >
+        {{ shop.name }}
+      </a>
+
+      <a class="mobile-menu__cart" href="{{ routes.cart_url }}">
+        BAG ({{ cart.item_count }})
+      </a>
+    </header>
+
+    <div class="mobile-menu__content">
+      {% if settings.main_menu != blank %}
+        <nav aria-label="Main menu">
+          <ul class="mobile-menu__navigation" role="list">
+            {% for link in settings.main_menu.links %}
+              <li>
+                <a
+                  class="mobile-menu__link{% if link.current %} is-active{% endif %}"
+                  href="{{ link.url }}"
+                  {% if link.current %}
+                    aria-current="page"
+                  {% endif %}
+                >
+                  {{ link.title }}
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        </nav>
+      {% endif %}
+
+      <div class="mobile-menu__utilities">
+        <a href="{{ routes.search_url }}">Search</a>
+
+        <button
+          type="button"
+          class="mobile-menu__theme-placeholder"
+          disabled
+        >
+          Light / Dark
+        </button>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+{% schema %}
+{
+  "name": "Mobile menu",
+  "settings": []
+}
+{% endschema %}

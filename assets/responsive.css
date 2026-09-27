@@ -6,6 +6,50 @@
   :root {
     --page-padding: 1rem;
   }
+
+  .desktop-sidebar {
+    display: none;
+  }
+
+  .mobile-header {
+    position: fixed;
+    z-index: 90;
+    top: 0;
+    left: 0;
+
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+
+    width: 100%;
+    min-height: var(--mobile-header-height);
+    padding: 0 var(--page-padding);
+
+    background: var(--color-background);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .mobile-header__menu-button {
+    justify-self: start;
+  }
+
+  .mobile-header__logo {
+    justify-self: center;
+
+    font-size: var(--font-size-md);
+    text-transform: uppercase;
+  }
+
+  .mobile-header__cart {
+    justify-self: end;
+
+    font-size: var(--font-size-xs);
+    text-transform: uppercase;
+  }
+
+  .site-main {
+    padding-top: var(--mobile-header-height);
+  }
 }
 
 /* ==========================================================================
@@ -16,6 +60,48 @@
   :root {
     --page-padding: 1.5rem;
   }
+
+  .desktop-sidebar {
+    display: none;
+  }
+
+  .mobile-header {
+    position: fixed;
+    z-index: 90;
+    top: 0;
+    left: 0;
+
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+
+    width: 100%;
+    min-height: var(--mobile-header-height);
+    padding: 0 var(--page-padding);
+
+    background: var(--color-background);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .mobile-header__menu-button {
+    justify-self: start;
+  }
+
+  .mobile-header__logo {
+    justify-self: center;
+    text-transform: uppercase;
+  }
+
+  .mobile-header__cart {
+    justify-self: end;
+
+    font-size: var(--font-size-sm);
+    text-transform: uppercase;
+  }
+
+  .site-main {
+    padding-top: var(--mobile-header-height);
+  }
 }
 
 /* ==========================================================================
@@ -25,5 +111,15 @@
 @media screen and (min-width: 1025px) {
   :root {
     --page-padding: 2rem;
+  }
+
+  .site-main {
+    width: calc(100% - var(--sidebar-width));
+    margin-left: var(--sidebar-width);
+  }
+
+  .mobile-header,
+  .mobile-menu {
+    display: none;
   }
 }
