@@ -67,6 +67,10 @@
       })();
     </script>
 
+    {{ 'base.css' | asset_url | stylesheet_tag }}
+    {{ 'theme.css' | asset_url | stylesheet_tag }}
+    {{ 'responsive.css' | asset_url | stylesheet_tag }}
+
     <style>
       :root {
         --color-background: {{ settings.color_background_light | default: '#ffffff' }};
@@ -79,10 +83,6 @@
         --color-text: {{ settings.color_text_dark | default: '#ffffff' }};
       }
     </style>
-
-    {{ 'base.css' | asset_url | stylesheet_tag }}
-    {{ 'theme.css' | asset_url | stylesheet_tag }}
-    {{ 'responsive.css' | asset_url | stylesheet_tag }}
 
     {% if settings.favicon != blank %}
       <link

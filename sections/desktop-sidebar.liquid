@@ -79,6 +79,34 @@
       >
         LIGHT / DARK
       </button>
+
+      {% if settings.instagram_url != blank or settings.tiktok_url != blank %}
+        <div class="social-links" aria-label="Social links">
+          {% if settings.instagram_url != blank %}
+            <a
+              class="social-links__link"
+              href="{{ settings.instagram_url }}"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+            >
+              {% render 'icon-instagram' %}
+            </a>
+          {% endif %}
+
+          {% if settings.tiktok_url != blank %}
+            <a
+              class="social-links__link"
+              href="{{ settings.tiktok_url }}"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="TikTok"
+            >
+              {% render 'icon-tiktok' %}
+            </a>
+          {% endif %}
+        </div>
+      {% endif %}
     </div>
   </div>
 </aside>
