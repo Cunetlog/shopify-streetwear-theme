@@ -8,5 +8,22 @@
  * ------------------------------------------------------------
  */
 {
-  "current": {}
+  "current": {
+    "logo": "shopify://shop_images/LogoQT8.jpg",
+    "sections": {
+      "desktop-sidebar": {
+        "type": "desktop-sidebar",
+        "settings": {}
+      },
+      "mobile-header": {
+        "type": "mobile-header",
+        "settings": {}
+      },
+      "mobile-menu": {
+        "type": "mobile-menu",
+        "settings": {}
+      }
+    },
+    "content_for_index": []
+  }
 }
