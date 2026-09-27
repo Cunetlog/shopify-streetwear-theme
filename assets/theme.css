@@ -179,8 +179,8 @@ a:hover {
 .desktop-sidebar__link {
     display: inline-block;
 
-    font-size: 0.8rem;
-    line-height: 1.15;
+    font-size: 0.95rem;
+    line-height: 1.2;
     text-transform: uppercase;
     letter-spacing: -0.02em;
 }
