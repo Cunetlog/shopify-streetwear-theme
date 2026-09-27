@@ -1,0 +1,108 @@
+/* ==========================================================================
+   Design tokens
+   ========================================================================== */
+
+:root {
+  --color-background: #f7f7f4;
+  --color-text: #111111;
+  --color-border: #d8d8d2;
+  --color-muted: #6e6e68;
+
+  --font-body:
+    "Courier New",
+    Courier,
+    monospace;
+
+  --font-heading:
+    "Courier New",
+    Courier,
+    monospace;
+
+  --font-size-xs: 0.6875rem;
+  --font-size-sm: 0.75rem;
+  --font-size-md: 0.875rem;
+  --font-size-lg: 1rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.75rem;
+
+  --line-height-tight: 1.1;
+  --line-height-normal: 1.4;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+
+  --page-padding: 1.25rem;
+
+  --transition-fast: 150ms ease;
+}
+
+/* ==========================================================================
+   Document
+   ========================================================================== */
+
+html {
+  background: var(--color-background);
+  color: var(--color-text);
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-text);
+
+  font-family: var(--font-body);
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-normal);
+
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* ==========================================================================
+   Typography
+   ========================================================================== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  line-height: var(--line-height-tight);
+}
+
+h1 {
+  font-size: var(--font-size-2xl);
+}
+
+h2 {
+  font-size: var(--font-size-xl);
+}
+
+h3 {
+  font-size: var(--font-size-lg);
+}
+
+a {
+  transition: opacity var(--transition-fast);
+}
+
+a:hover {
+  opacity: 0.65;
+}
+
+/* ==========================================================================
+   Layout
+   ========================================================================== */
+
+.site-main {
+  width: 100%;
+  min-height: 100vh;
+}
