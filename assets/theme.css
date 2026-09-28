@@ -115,6 +115,34 @@ a:hover {
 }
 
 /* ==========================================================================
+   Homepage viewport layout
+   ========================================================================== */
+
+body.template-index {
+    display: flex;
+    flex-direction: column;
+
+    min-height: 100vh;
+    min-height: 100svh;
+}
+
+.template-index .site-main {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+
+    min-height: 0;
+}
+
+.template-index .home-products {
+    flex: 0 0 auto;
+}
+
+.template-index .brand-manifesto {
+    margin-top: auto;
+}
+
+/* ==========================================================================
    Accessibility utilities
    ========================================================================== */
 

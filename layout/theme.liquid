@@ -95,7 +95,7 @@
     {{ content_for_header }}
   </head>
 
-  <body>
+  <body class="template-{{ request.page_type | handle }}">
     <a
       class="skip-link"
       href="#MainContent"
