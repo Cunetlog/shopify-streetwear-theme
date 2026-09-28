@@ -98,5 +98,15 @@
         "label": "TikTok URL"
       }
     ]
+  },
+  {
+    "name": "Footer",
+    "settings": [
+      {
+        "type": "link_list",
+        "id": "footer_legal_menu",
+        "label": "Terms and policies menu"
+      }
+    ]
   }
 ]

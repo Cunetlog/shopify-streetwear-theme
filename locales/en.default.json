@@ -84,5 +84,12 @@
     "in_stock": "In stock",
     "quantity": "Quantity",
     "add_to_cart": "Add to cart"
+  },
+  "footer": {
+    "newsletter": "Newsletter",
+    "newsletter_email": "Email",
+    "newsletter_submit": "Subscribe",
+    "newsletter_success": "Thanks for subscribing.",
+    "terms": "Terms and policies"
   }
 }

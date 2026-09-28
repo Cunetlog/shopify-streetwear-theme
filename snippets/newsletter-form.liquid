@@ -1,0 +1,48 @@
+{% form 'customer', class: 'newsletter-form' %}
+  <input
+    type="hidden"
+    name="contact[tags]"
+    value="newsletter"
+  >
+
+  <div class="newsletter-form__row">
+    <label
+      class="visually-hidden"
+      for="NewsletterEmail"
+    >
+      {{ 'footer.newsletter_email' | t }}
+    </label>
+
+    <input
+      id="NewsletterEmail"
+      class="newsletter-form__input"
+      type="email"
+      name="contact[email]"
+      value="{% if customer %}{{ customer.email }}{% endif %}"
+      placeholder="{{ 'footer.newsletter_email' | t }}"
+      autocomplete="email"
+      autocorrect="off"
+      autocapitalize="off"
+      required
+    >
+
+    <button
+      class="newsletter-form__submit"
+      type="submit"
+    >
+      {{ 'footer.newsletter_submit' | t }}
+    </button>
+  </div>
+
+  {% if form.posted_successfully? %}
+    <p class="newsletter-form__message">
+      {{ 'footer.newsletter_success' | t }}
+    </p>
+  {% endif %}
+
+  {% if form.errors %}
+    <div class="newsletter-form__message">
+      {{ form.errors | default_errors }}
+    </div>
+  {% endif %}
+{% endform %}

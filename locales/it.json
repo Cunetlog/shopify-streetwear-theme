@@ -60,5 +60,12 @@
     "in_stock": "Disponibile",
     "quantity": "Quantità",
     "add_to_cart": "Aggiungi al carrello"
+  },
+  "footer": {
+    "newsletter": "Newsletter",
+    "newsletter_email": "Email",
+    "newsletter_submit": "Iscriviti",
+    "newsletter_success": "Grazie per esserti iscritto.",
+    "terms": "Termini e informative"
   }
 }
