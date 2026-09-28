@@ -115,31 +115,45 @@ a:hover {
 }
 
 /* ==========================================================================
-   Homepage viewport layout
+   Homepage desktop layout
    ========================================================================== */
 
-body.template-index {
-    display: flex;
-    flex-direction: column;
+@media screen and (min-width: 1025px) {
+    body.template-index {
+        display: flex;
+        flex-direction: column;
 
-    min-height: 100vh;
-    min-height: 100svh;
-}
+        min-height: 100vh;
+        min-height: 100svh;
+    }
 
-.template-index .site-main {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
+    .template-index .site-main {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
 
-    min-height: 0;
-}
+        min-height: 0;
+    }
 
-.template-index .home-products {
-    flex: 0 0 auto;
-}
+    .template-index .home-products {
+        flex: 0 0 auto;
+    }
 
-.template-index .brand-manifesto {
-    margin-top: auto;
+    .template-index .brand-manifesto {
+        display: flex;
+        flex: 1;
+    }
+
+    .template-index .brand-manifesto__inner {
+        flex: 1;
+        align-items: center;
+
+        width: 100%;
+    }
+
+    .template-index .site-footer {
+        flex: 0 0 auto;
+    }
 }
 
 /* ==========================================================================
