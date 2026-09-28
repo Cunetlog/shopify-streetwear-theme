@@ -158,6 +158,20 @@
     min-width: 0;
     height: 2.75rem;
   }
+
+  .shopify-policy__container {
+    padding:
+      var(--space-5) var(--page-padding) var(--space-7);
+  }
+  
+  .shopify-policy__title {
+    margin-bottom: var(--space-5);
+  }
+  
+  .shopify-policy__body {
+    font-size: var(--font-size-sm);
+    line-height: 1.55;
+  }
 }
 
 /* ==========================================================================

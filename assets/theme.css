@@ -115,45 +115,31 @@ a:hover {
 }
 
 /* ==========================================================================
-   Homepage desktop layout
+   Homepage viewport layout
    ========================================================================== */
 
-@media screen and (min-width: 1025px) {
-    body.template-index {
-        display: flex;
-        flex-direction: column;
+body.template-index {
+    display: flex;
+    flex-direction: column;
 
-        min-height: 100vh;
-        min-height: 100svh;
-    }
+    min-height: 100vh;
+    min-height: 100svh;
+}
 
-    .template-index .site-main {
-        display: flex;
-        flex: 1;
-        flex-direction: column;
+.template-index .site-main {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
 
-        min-height: 0;
-    }
+    min-height: 0;
+}
 
-    .template-index .home-products {
-        flex: 0 0 auto;
-    }
+.template-index .home-products {
+    flex: 0 0 auto;
+}
 
-    .template-index .brand-manifesto {
-        display: flex;
-        flex: 1;
-    }
-
-    .template-index .brand-manifesto__inner {
-        flex: 1;
-        align-items: center;
-
-        width: 100%;
-    }
-
-    .template-index .site-footer {
-        flex: 0 0 auto;
-    }
+.template-index .brand-manifesto {
+    margin-top: auto;
 }
 
 /* ==========================================================================
@@ -1679,4 +1665,53 @@ body.cart-drawer-open {
 
     font-size: var(--font-size-xs);
     line-height: var(--line-height-normal);
+}
+
+/* ==========================================================================
+   Shopify policy pages
+   ========================================================================== */
+
+.shopify-policy__container {
+    width: 100%;
+    max-width: 48rem;
+    margin: 0 auto;
+    padding:
+        var(--space-7) var(--page-padding) var(--space-8);
+}
+
+.shopify-policy__title {
+    margin-bottom: var(--space-6);
+    text-align: left;
+}
+
+.shopify-policy__title h1 {
+    margin: 0;
+
+    font-size: var(--font-size-xl);
+    line-height: var(--line-height-tight);
+    text-transform: uppercase;
+}
+
+.shopify-policy__body {
+    font-size: var(--font-size-md);
+    line-height: 1.6;
+}
+
+.shopify-policy__body p {
+    margin: 0;
+}
+
+.shopify-policy__body p+p {
+    margin-top: var(--space-5);
+}
+
+.shopify-policy__body h2,
+.shopify-policy__body h3,
+.shopify-policy__body h4 {
+    margin:
+        var(--space-6) 0 var(--space-3);
+
+    font-size: var(--font-size-md);
+    line-height: var(--line-height-normal);
+    text-transform: uppercase;
 }

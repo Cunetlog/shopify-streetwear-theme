@@ -29,7 +29,7 @@
       {% endif %}
 
       {% unless product.available %}
-        <span class="product-card__status"> Sold out </span>
+        <span class="product-card__status"> {{ 'theme.sold_out' | t }} </span>
       {% endunless %}
     </div>
 
